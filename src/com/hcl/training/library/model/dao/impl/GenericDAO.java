@@ -1,7 +1,9 @@
-package com.hcl.training.library.model.dao;
+package com.hcl.training.library.model.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.hcl.training.library.model.dao.IGenericDAO;
 
 public abstract class GenericDAO<T> implements IGenericDAO<T> {
 
