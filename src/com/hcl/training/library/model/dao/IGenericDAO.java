@@ -1,6 +1,7 @@
 package com.hcl.training.library.model.dao;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public interface IGenericDAO<T> {
 
@@ -10,7 +11,7 @@ public interface IGenericDAO<T> {
 
 	public boolean update(T t);
 
-	public T find(long id);
+	public T find(Predicate<T> predicate);
 
 	public List<T> findAll();
 

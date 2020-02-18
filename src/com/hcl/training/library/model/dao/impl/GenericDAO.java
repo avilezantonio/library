@@ -2,6 +2,8 @@ package com.hcl.training.library.model.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 import com.hcl.training.library.model.dao.IGenericDAO;
 
@@ -25,11 +27,17 @@ public abstract class GenericDAO<T> implements IGenericDAO<T> {
 	}
 
 	@Override
+	public T find(Predicate<T> predicate) {
+		Optional<T> entity = this.getStorage().stream().filter(predicate).findAny();
+		return entity.orElse(null);
+	}
+
+	@Override
 	public List<T> findAll() {
 		return this.getStorage();
 	}
 
-	private List<T> getStorage() {
+	protected List<T> getStorage() {
 		return this.storage;
 	}
 
